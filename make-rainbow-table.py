@@ -4,12 +4,12 @@
                           of a wordlist using MD5, SHA224, SHA256,
                           SHA384, SHA512, or all.'''
 
-__author__ = 'Brian Jopling'
+__author__    = 'Brian Jopling'
 __copyright__ = 'Copyright 2017'
-__credits__ = ['Brian Jopling']
-__license__ = 'MIT'
-__version__ = '1.0'
-__status__ = 'Development'
+__credits__   = ['Brian Jopling']
+__license__   = 'MIT'
+__version__   = '1.0'
+__status__    = 'Development'
 
 ''' USAGE '''
 # Ensure this file resides in the same directory as your wordlist.
@@ -46,7 +46,7 @@ def create_rainbow_table(db_rainbow):
     '''Creates a table \'rainbow\' in database with two fields,
        one for hash, one for word.'''
     try:
-        db_rainbow.execute('CREATE TABLE rainbow (hash VARCHAR(32) \
+        db_rainbow.execute('CREATE TABLE rainbow (hash VARCHAR(255) \
                             PRIMARY KEY, word VARCHAR(255));')
     except sqlite3.OperationalError:
         print 'Table \'rainbow\' already exists!'
