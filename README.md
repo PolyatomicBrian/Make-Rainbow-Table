@@ -1,5 +1,5 @@
 # Make-Rainbow-Table
-A simple rainbow table generator supporting md5, sha224, sha256, sha384, and sha512, written in **Python 2**.
+A simple rainbow table generator supporting MD5, SHA224, SHA256, SHA384, and SHA512, written in **Python 2**.
 
 ## Usage
 
