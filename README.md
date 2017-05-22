@@ -31,3 +31,28 @@ You can specify what you feel necessary, however.
     $ python make-rainbow-table.py -d rbdatabase.db -w mycustom.list -t sha256
 
 If the specified database does not exist, then it will be created for you.
+
+## Using the Generated Rainbow Table
+
+There are plenty of ways to use this table to your advantage. This is a quick and easy method for 'cracking' a hash:
+
+**Scenario**: Let's say you have a database containing your Rainbow Table called `rainbow.db`. You want to use it to crack this MD5 hash:
+
+    176ec4bc8d9dd70dc0e745d6ce103eaa
+    
+Open your Rainbow Table with SQLite3:
+
+    $ sqlite3 rainbow.db 
+    
+Now query for the hash:
+
+    $ SELECT * FROM rainbow WHERE hash='176ec4bc8d9dd70dc0e745d6ce103eaa';
+    
+Your screen should now display:
+
+    176ec4bc8d9dd70dc0e745d6ce103eaa|abundant
+
+This means that 'abundant' was the word that was hashed.
+Congrats!
+
+**Note**: Again, there are lots of ways this can be accomplished. This is just one of 'em.
