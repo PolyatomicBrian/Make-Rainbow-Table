@@ -46,7 +46,7 @@ Open your Rainbow Table with SQLite3:
     
 Now query for the hash:
 
-    $ SELECT * FROM rainbow WHERE hash='176ec4bc8d9dd70dc0e745d6ce103eaa';
+    sqlite> SELECT * FROM rainbow WHERE hash='176ec4bc8d9dd70dc0e745d6ce103eaa';
     
 Your screen should now display:
 
