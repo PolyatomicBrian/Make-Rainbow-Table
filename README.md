@@ -1,5 +1,5 @@
 # Make-Rainbow-Table
-A simple rainbow table generator supporting MD5, SHA224, SHA256, SHA384, and SHA512, written in **Python 2**.
+A simple rainbow table generator supporting MD5, SHA224, SHA256, SHA384, and SHA512, written in **Python 2.7**.
 
 ## Usage
 
@@ -56,3 +56,4 @@ This means that 'abundant' was the word that was hashed.
 Congrats!
 
 **Note**: Again, there are lots of ways this can be accomplished. This is just one of 'em.
+This process can easily be scripted, but the purpose of this project is to *generate* a Rainbow Table; not use it to crack hashes. 
