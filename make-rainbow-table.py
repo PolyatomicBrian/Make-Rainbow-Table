@@ -11,12 +11,17 @@ __license__   = 'MIT'
 __version__   = '1.0'
 __status__    = 'Development'
 
-''' USAGE '''
-# Ensure this file resides in the same directory as your wordlist.
-# Run with:
-''' $python make-rainbow-table.py -w WORDLIST -t HASHTYPE '''
-# The following are valid hashtypes:
-# md5, sha224, sha256, sha384, sha512, all
+'''
+USAGE
+Ensure this file resides in the same directory as your wordlist.
+Run with:
+
+ $ python make-rainbow-table.py -w WORDLIST -t HASHTYPE
+
+The following are valid hashtypes:
+md5, sha224, sha256, sha384, sha512, all
+'''
+
 
 ''' IMPORTS '''
 # Used for database modification:
@@ -25,6 +30,7 @@ import sqlite3
 import hashlib
 # Used for getting options/args:
 from optparse import OptionParser
+
 
 ''' OPTIONS / ARGS '''
 parser = OptionParser()
@@ -51,6 +57,7 @@ def create_rainbow_table(db_rainbow):
     except sqlite3.OperationalError:
         print 'Table \'rainbow\' already exists!'
 
+
 def append_to_table(db_rainbow, word_hashed, word):
     '''Inserts a word and its hash into the \'rainbow\' table of our db.'''
     sql_values = (word_hashed, word)
@@ -60,6 +67,7 @@ def append_to_table(db_rainbow, word_hashed, word):
                             sql_values)
     except sqlite3.IntegrityError:
         print '%s is already in the database as hash %s' % (word, word_hashed)
+
 
 def hash_word(word, hash_type):
     '''Returns hashed word of specified hash type.'''
@@ -76,6 +84,7 @@ def hash_word(word, hash_type):
     else:
         return None
 
+
 def iterate_wordlist(word_list_name, db_rainbow):
     hash_types = ['md5', 'sha224', 'sha256', 'sha384', 'sha512']
     hash_type = options.hash_type
@@ -90,23 +99,29 @@ def iterate_wordlist(word_list_name, db_rainbow):
             append_to_table(db_rainbow, word_hashed, word)
     file_word_list.close()
 
+
 def save_and_close_db(db_connect):
     # Save our changes:
     db_connect.commit()
     # Close the db:
     db_connect.close()
 
-def __main__():
-    # Get options.
+
+def main():
+    # Get CLI options.
     db_name = options.db_name
     word_list_name = options.word_list_name
+
     # Connect to db.
     db_connect = sqlite3.connect(db_name)
     db_rainbow = db_connect.cursor()
+
     # Modify db.
     create_rainbow_table(db_rainbow)
     iterate_wordlist(word_list_name, db_rainbow)
     save_and_close_db(db_connect)
 
+
 ''' PROCESS '''
-__main__()
+if __name__ == '__main__':
+    main()
