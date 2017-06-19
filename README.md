@@ -1,5 +1,5 @@
 # Make-Rainbow-Table
-A simple rainbow table generator supporting MD5, SHA224, SHA256, SHA384, and SHA512, written in **Python 2**.
+A simple rainbow table generator supporting MD5, SHA224, SHA256, SHA384, and SHA512, written in **Python 2.7**.
 
 ## Usage
 
@@ -46,7 +46,7 @@ Open your Rainbow Table with SQLite3:
     
 Now query for the hash:
 
-    $ SELECT * FROM rainbow WHERE hash='176ec4bc8d9dd70dc0e745d6ce103eaa';
+    sqlite> SELECT * FROM rainbow WHERE hash='176ec4bc8d9dd70dc0e745d6ce103eaa';
     
 Your screen should now display:
 
@@ -56,3 +56,4 @@ This means that 'abundant' was the word that was hashed.
 Congrats!
 
 **Note**: Again, there are lots of ways this can be accomplished. This is just one of 'em.
+This process can easily be scripted, but the purpose of this project is to *generate* a Rainbow Table; not use it to crack hashes. 
